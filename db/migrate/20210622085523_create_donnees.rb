@@ -10,7 +10,7 @@ class CreateDonnees < ActiveRecord::Migration[6.0]
       t.string :adresse_phy
       t.string :email
       t.string :telephone
-      
+
       t.timestamps
     end
   end

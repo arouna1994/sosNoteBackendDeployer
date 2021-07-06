@@ -2,17 +2,17 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `bin/rails
-# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_28_191429) do
+ActiveRecord::Schema.define(version: 2021_06_26_154640) do
 
-  create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "admin_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "competences", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "competences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "donnee_id"
     t.string "annee"
     t.text "contenu"
@@ -79,9 +79,10 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "demandes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "demandes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "type_document_id", null: false
     t.bigint "admin_user_id", null: false
+    t.text "modele"
     t.string "etat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -90,7 +91,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["type_document_id"], name: "index_demandes_on_type_document_id"
   end
 
-  create_table "donnees", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "donnees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "type_document_id", null: false
     t.string "structure_ciblee"
     t.string "nom"
@@ -105,7 +106,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["type_document_id"], name: "index_donnees_on_type_document_id"
   end
 
-  create_table "emplois", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "emplois", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "donnee_id"
     t.string "annee"
     t.text "contenu"
@@ -113,7 +114,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "expressions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "expressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "donnee_id"
     t.string "oral"
     t.string "ecrit"
@@ -123,7 +124,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.string "langue"
   end
 
-  create_table "historiques", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "historiques", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "libelle"
     t.bigint "admin_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -131,7 +132,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["admin_user_id"], name: "index_historiques_on_admin_user_id"
   end
 
-  create_table "parcours_etudes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "parcours_etudes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "donnee_id"
     t.string "annee"
     t.text "contenu"
@@ -139,7 +140,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "piece_jointes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "piece_jointes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "demande_id", null: false
     t.string "uuid"
     t.string "tag"
@@ -152,7 +153,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["demande_id"], name: "index_piece_jointes_on_demande_id"
   end
 
-  create_table "services", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "type_document_id", null: false
     t.string "prestation"
     t.string "etat"
@@ -161,7 +162,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.index ["type_document_id"], name: "index_services_on_type_document_id"
   end
 
-  create_table "stages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "stages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "donnee_id"
     t.string "annee"
     t.text "contenu"
@@ -169,7 +170,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_191429) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "type_documents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "type_documents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "libelle"
     t.string "etat"
     t.datetime "created_at", precision: 6, null: false
